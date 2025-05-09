@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPOCK &mdash; SPOCK 3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=d636b35b"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SPOCK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SPOCK</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SPOCK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SPOCK</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spock">
+<h1>SPOCK<a class="headerlink" href="#spock" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SPOCK.html">SPOCK package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.ETC">SPOCK.ETC module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.ETC.etc"><code class="docutils literal notranslate"><span class="pre">etc</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.ETC.etc.airmass"><code class="docutils literal notranslate"><span class="pre">etc.airmass</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.ETC.etc.exp_time_calculator"><code class="docutils literal notranslate"><span class="pre">etc.exp_time_calculator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.ETC.etc.peak_calculation"><code class="docutils literal notranslate"><span class="pre">etc.peak_calculation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.long_term_scheduler">SPOCK.long_term_scheduler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules"><code class="docutils literal notranslate"><span class="pre">Schedules</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.date_range_in_days"><code class="docutils literal notranslate"><span class="pre">Schedules.date_range_in_days</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.date_ranges_day_by_day"><code class="docutils literal notranslate"><span class="pre">Schedules.date_ranges_day_by_day</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.exposure_time"><code class="docutils literal notranslate"><span class="pre">Schedules.exposure_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.exposure_time_table"><code class="docutils literal notranslate"><span class="pre">Schedules.exposure_time_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.get_hours_files_trappist"><code class="docutils literal notranslate"><span class="pre">Schedules.get_hours_files_trappist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_SNO_observed_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_SNO_observed_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_SSO_observed_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_SSO_observed_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_is_julien_criterion"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_is_julien_criterion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_rise_targets_sorted"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_rise_targets_sorted</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_saintex_observed_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_saintex_observed_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_set_targets_sorted"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_set_targets_sorted</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.idx_trappist_observed_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.idx_trappist_observed_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.info_obs_possible"><code class="docutils literal notranslate"><span class="pre">Schedules.info_obs_possible()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.is_constraint_hours"><code class="docutils literal notranslate"><span class="pre">Schedules.is_constraint_hours()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.is_constraints_met_first_target"><code class="docutils literal notranslate"><span class="pre">Schedules.is_constraints_met_first_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.is_constraints_met_second_target"><code class="docutils literal notranslate"><span class="pre">Schedules.is_constraints_met_second_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.is_moon_and_visibility_constraint"><code class="docutils literal notranslate"><span class="pre">Schedules.is_moon_and_visibility_constraint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.load_parameters"><code class="docutils literal notranslate"><span class="pre">Schedules.load_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.make_night_block"><code class="docutils literal notranslate"><span class="pre">Schedules.make_night_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.make_schedule"><code class="docutils literal notranslate"><span class="pre">Schedules.make_schedule()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.months_obs"><code class="docutils literal notranslate"><span class="pre">Schedules.months_obs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.nb_hours_observed"><code class="docutils literal notranslate"><span class="pre">Schedules.nb_hours_observed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.nb_hours_threshold"><code class="docutils literal notranslate"><span class="pre">Schedules.nb_hours_threshold</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.night_duration"><code class="docutils literal notranslate"><span class="pre">Schedules.night_duration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.no_obs_with_different_tel"><code class="docutils literal notranslate"><span class="pre">Schedules.no_obs_with_different_tel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.observability_seclection"><code class="docutils literal notranslate"><span class="pre">Schedules.observability_seclection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.reference_table"><code class="docutils literal notranslate"><span class="pre">Schedules.reference_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.rise_time_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.rise_time_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.schedule_blocks"><code class="docutils literal notranslate"><span class="pre">Schedules.schedule_blocks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.set_time_targets"><code class="docutils literal notranslate"><span class="pre">Schedules.set_time_targets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.shift_hours_observation"><code class="docutils literal notranslate"><span class="pre">Schedules.shift_hours_observation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.table_priority_prio"><code class="docutils literal notranslate"><span class="pre">Schedules.table_priority_prio()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.time_ranges"><code class="docutils literal notranslate"><span class="pre">Schedules.time_ranges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_hours_observed_first"><code class="docutils literal notranslate"><span class="pre">Schedules.update_hours_observed_first()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_hours_observed_second"><code class="docutils literal notranslate"><span class="pre">Schedules.update_hours_observed_second()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_nb_hours_all"><code class="docutils literal notranslate"><span class="pre">Schedules.update_nb_hours_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_nb_hours_from_server"><code class="docutils literal notranslate"><span class="pre">Schedules.update_nb_hours_from_server()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_nb_hours_sno"><code class="docutils literal notranslate"><span class="pre">Schedules.update_nb_hours_sno()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_telescope_from_server"><code class="docutils literal notranslate"><span class="pre">Schedules.update_telescope_from_server()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.Schedules.update_telescope_sno"><code class="docutils literal notranslate"><span class="pre">Schedules.update_telescope_sno()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.altaz"><code class="docutils literal notranslate"><span class="pre">altaz()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.charge_observatories"><code class="docutils literal notranslate"><span class="pre">charge_observatories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.compare_target_lists"><code class="docutils literal notranslate"><span class="pre">compare_target_lists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.coord_transfotm_to_alt"><code class="docutils literal notranslate"><span class="pre">coord_transfotm_to_alt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.date_range_in_days"><code class="docutils literal notranslate"><span class="pre">date_range_in_days()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.diff_list"><code class="docutils literal notranslate"><span class="pre">diff_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.first_elem_list"><code class="docutils literal notranslate"><span class="pre">first_elem_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.get_hours_files_sno"><code class="docutils literal notranslate"><span class="pre">get_hours_files_sno()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.index_list1_list2"><code class="docutils literal notranslate"><span class="pre">index_list1_list2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.last_elem_list"><code class="docutils literal notranslate"><span class="pre">last_elem_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.make_docx_schedule"><code class="docutils literal notranslate"><span class="pre">make_docx_schedule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.make_plans"><code class="docutils literal notranslate"><span class="pre">make_plans()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.max_unit_list"><code class="docutils literal notranslate"><span class="pre">max_unit_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.month_option"><code class="docutils literal notranslate"><span class="pre">month_option()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.observability"><code class="docutils literal notranslate"><span class="pre">observability()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.read_night_block"><code class="docutils literal notranslate"><span class="pre">read_night_block()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.reverse_observability"><code class="docutils literal notranslate"><span class="pre">reverse_observability()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.save_schedule"><code class="docutils literal notranslate"><span class="pre">save_schedule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.sno_planned_targets"><code class="docutils literal notranslate"><span class="pre">sno_planned_targets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.sso_planned_targets"><code class="docutils literal notranslate"><span class="pre">sso_planned_targets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.target_list_good_coord_format"><code class="docutils literal notranslate"><span class="pre">target_list_good_coord_format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.tn_planned_targets"><code class="docutils literal notranslate"><span class="pre">tn_planned_targets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.ts_planned_targets"><code class="docutils literal notranslate"><span class="pre">ts_planned_targets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.long_term_scheduler.upload_plans"><code class="docutils literal notranslate"><span class="pre">upload_plans()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.make_night_plans">SPOCK.make_night_plans module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.make_night_plans.dome_rotation"><code class="docutils literal notranslate"><span class="pre">dome_rotation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.make_night_plans.make_astra_schedule_file"><code class="docutils literal notranslate"><span class="pre">make_astra_schedule_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.make_night_plans.make_np"><code class="docutils literal notranslate"><span class="pre">make_np()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.make_night_plans.make_scheduled_table"><code class="docutils literal notranslate"><span class="pre">make_scheduled_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.mphot">SPOCK.mphot module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.display_results"><code class="docutils literal notranslate"><span class="pre">display_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.gaus"><code class="docutils literal notranslate"><span class="pre">gaus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.generateFluxBase"><code class="docutils literal notranslate"><span class="pre">generateFluxBase()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.generateRadianceBase"><code class="docutils literal notranslate"><span class="pre">generateRadianceBase()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.generateSR"><code class="docutils literal notranslate"><span class="pre">generateSR()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.get_precision"><code class="docutils literal notranslate"><span class="pre">get_precision()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.int_time"><code class="docutils literal notranslate"><span class="pre">int_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.interp"><code class="docutils literal notranslate"><span class="pre">interp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.interpolate_dfs"><code class="docutils literal notranslate"><span class="pre">interpolate_dfs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.plotSRs"><code class="docutils literal notranslate"><span class="pre">plotSRs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.scint"><code class="docutils literal notranslate"><span class="pre">scint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.to_precision"><code class="docutils literal notranslate"><span class="pre">to_precision()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.update_progress"><code class="docutils literal notranslate"><span class="pre">update_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.mphot.vega_mag"><code class="docutils literal notranslate"><span class="pre">vega_mag()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.plots_scheduler">SPOCK.plots_scheduler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.airmass_altitude_plot_given_target"><code class="docutils literal notranslate"><span class="pre">airmass_altitude_plot_given_target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.airmass_altitude_plot_nolist"><code class="docutils literal notranslate"><span class="pre">airmass_altitude_plot_nolist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.airmass_altitude_plot_proposition"><code class="docutils literal notranslate"><span class="pre">airmass_altitude_plot_proposition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.airmass_altitude_plot_saved"><code class="docutils literal notranslate"><span class="pre">airmass_altitude_plot_saved()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.airmass_plot_proposition"><code class="docutils literal notranslate"><span class="pre">airmass_plot_proposition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.airmass_plot_saved"><code class="docutils literal notranslate"><span class="pre">airmass_plot_saved()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.binning_for_cov"><code class="docutils literal notranslate"><span class="pre">binning_for_cov()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.charge_observatories"><code class="docutils literal notranslate"><span class="pre">charge_observatories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.constraints_scores"><code class="docutils literal notranslate"><span class="pre">constraints_scores()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.coverage"><code class="docutils literal notranslate"><span class="pre">coverage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.gantt_chart"><code class="docutils literal notranslate"><span class="pre">gantt_chart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.gantt_chart_all"><code class="docutils literal notranslate"><span class="pre">gantt_chart_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.getSPCdata"><code class="docutils literal notranslate"><span class="pre">getSPCdata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.getSPClcV2"><code class="docutils literal notranslate"><span class="pre">getSPClcV2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.get_all_LCS"><code class="docutils literal notranslate"><span class="pre">get_all_LCS()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.phase_coverage"><code class="docutils literal notranslate"><span class="pre">phase_coverage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.phase_coverage_given_target"><code class="docutils literal notranslate"><span class="pre">phase_coverage_given_target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.phase_folded_LC"><code class="docutils literal notranslate"><span class="pre">phase_folded_LC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.plot_annulus_phase_covered"><code class="docutils literal notranslate"><span class="pre">plot_annulus_phase_covered()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.plot_polar_phase_coverage"><code class="docutils literal notranslate"><span class="pre">plot_polar_phase_coverage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.plots_scheduler.plot_slice"><code class="docutils literal notranslate"><span class="pre">plot_slice()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.scheduler">SPOCK.scheduler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.charge_observatories"><code class="docutils literal notranslate"><span class="pre">charge_observatories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.first_elem_list"><code class="docutils literal notranslate"><span class="pre">first_elem_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.last_elem_list"><code class="docutils literal notranslate"><span class="pre">last_elem_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.month_option"><code class="docutils literal notranslate"><span class="pre">month_option()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.observability"><code class="docutils literal notranslate"><span class="pre">observability()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.prediction"><code class="docutils literal notranslate"><span class="pre">prediction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.reverse_observability"><code class="docutils literal notranslate"><span class="pre">reverse_observability()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules"><code class="docutils literal notranslate"><span class="pre">schedules</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.date_range_in_days"><code class="docutils literal notranslate"><span class="pre">schedules.date_range_in_days</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.date_ranges_day_by_day"><code class="docutils literal notranslate"><span class="pre">schedules.date_ranges_day_by_day</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.exposure_time"><code class="docutils literal notranslate"><span class="pre">schedules.exposure_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.is_moon_and_visibility_constraint"><code class="docutils literal notranslate"><span class="pre">schedules.is_moon_and_visibility_constraint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.load_parameters"><code class="docutils literal notranslate"><span class="pre">schedules.load_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.locking_observations"><code class="docutils literal notranslate"><span class="pre">schedules.locking_observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.make_schedule"><code class="docutils literal notranslate"><span class="pre">schedules.make_schedule()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.months_obs"><code class="docutils literal notranslate"><span class="pre">schedules.months_obs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.night_duration"><code class="docutils literal notranslate"><span class="pre">schedules.night_duration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.observability_selection"><code class="docutils literal notranslate"><span class="pre">schedules.observability_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.target_table_spc"><code class="docutils literal notranslate"><span class="pre">schedules.target_table_spc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.targets"><code class="docutils literal notranslate"><span class="pre">schedules.targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.time_ranges"><code class="docutils literal notranslate"><span class="pre">schedules.time_ranges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.schedules.transit_follow_up"><code class="docutils literal notranslate"><span class="pre">schedules.transit_follow_up()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.scheduler.target_list_good_coord_format"><code class="docutils literal notranslate"><span class="pre">target_list_good_coord_format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.short_term_scheduler">SPOCK.short_term_scheduler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules"><code class="docutils literal notranslate"><span class="pre">Schedules</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.dome_rotation"><code class="docutils literal notranslate"><span class="pre">Schedules.dome_rotation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.end_of_observation"><code class="docutils literal notranslate"><span class="pre">Schedules.end_of_observation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.exposure_time"><code class="docutils literal notranslate"><span class="pre">Schedules.exposure_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.load_parameters"><code class="docutils literal notranslate"><span class="pre">Schedules.load_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.locking_observations"><code class="docutils literal notranslate"><span class="pre">Schedules.locking_observations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.make_night_block"><code class="docutils literal notranslate"><span class="pre">Schedules.make_night_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.make_scheduled_table"><code class="docutils literal notranslate"><span class="pre">Schedules.make_scheduled_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.monitoring"><code class="docutils literal notranslate"><span class="pre">Schedules.monitoring()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.night_duration"><code class="docutils literal notranslate"><span class="pre">Schedules.night_duration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.planification"><code class="docutils literal notranslate"><span class="pre">Schedules.planification()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.special_target"><code class="docutils literal notranslate"><span class="pre">Schedules.special_target()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.special_target_with_start_end"><code class="docutils literal notranslate"><span class="pre">Schedules.special_target_with_start_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.start_of_observation"><code class="docutils literal notranslate"><span class="pre">Schedules.start_of_observation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.transit_follow_up"><code class="docutils literal notranslate"><span class="pre">Schedules.transit_follow_up()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.Schedules.visibility_plot"><code class="docutils literal notranslate"><span class="pre">Schedules.visibility_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.charge_observatories"><code class="docutils literal notranslate"><span class="pre">charge_observatories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.date_range_in_days"><code class="docutils literal notranslate"><span class="pre">date_range_in_days()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.get_info_follow_up_target"><code class="docutils literal notranslate"><span class="pre">get_info_follow_up_target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.make_plans"><code class="docutils literal notranslate"><span class="pre">make_plans()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.prediction"><code class="docutils literal notranslate"><span class="pre">prediction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.read_night_block"><code class="docutils literal notranslate"><span class="pre">read_night_block()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.save_schedule"><code class="docutils literal notranslate"><span class="pre">save_schedule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.target_list_good_coord_format"><code class="docutils literal notranslate"><span class="pre">target_list_good_coord_format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.upload_plans"><code class="docutils literal notranslate"><span class="pre">upload_plans()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.short_term_scheduler.visibility_plot"><code class="docutils literal notranslate"><span class="pre">visibility_plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.stats">SPOCK.stats module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.date_night_start_func"><code class="docutils literal notranslate"><span class="pre">date_night_start_func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.df_all_obs_scheduled"><code class="docutils literal notranslate"><span class="pre">df_all_obs_scheduled()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.info_on_Sp_target"><code class="docutils literal notranslate"><span class="pre">info_on_Sp_target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.listFD"><code class="docutils literal notranslate"><span class="pre">listFD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.read_all_night_plans_server"><code class="docutils literal notranslate"><span class="pre">read_all_night_plans_server()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.read_night_plans_server"><code class="docutils literal notranslate"><span class="pre">read_night_plans_server()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.stats.run_masterfile"><code class="docutils literal notranslate"><span class="pre">run_masterfile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.txt_files">SPOCK.txt_files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.Path_txt_files"><code class="docutils literal notranslate"><span class="pre">Path_txt_files()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.biasdark"><code class="docutils literal notranslate"><span class="pre">biasdark()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.biasdark_comete"><code class="docutils literal notranslate"><span class="pre">biasdark_comete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.charge_observatory"><code class="docutils literal notranslate"><span class="pre">charge_observatory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.first_target"><code class="docutils literal notranslate"><span class="pre">first_target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.first_target_no_DONUTS"><code class="docutils literal notranslate"><span class="pre">first_target_no_DONUTS()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.first_target_offset"><code class="docutils literal notranslate"><span class="pre">first_target_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatdawn"><code class="docutils literal notranslate"><span class="pre">flatdawn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatdawn_artemis"><code class="docutils literal notranslate"><span class="pre">flatdawn_artemis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatdawn_no_flats"><code class="docutils literal notranslate"><span class="pre">flatdawn_no_flats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_artemis_evening"><code class="docutils literal notranslate"><span class="pre">flatexo_artemis_evening()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_artemis_morning"><code class="docutils literal notranslate"><span class="pre">flatexo_artemis_morning()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_calli"><code class="docutils literal notranslate"><span class="pre">flatexo_calli()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_euro"><code class="docutils literal notranslate"><span class="pre">flatexo_euro()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_gany"><code class="docutils literal notranslate"><span class="pre">flatexo_gany()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_io"><code class="docutils literal notranslate"><span class="pre">flatexo_io()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.flatexo_saintex"><code class="docutils literal notranslate"><span class="pre">flatexo_saintex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.haumea"><code class="docutils literal notranslate"><span class="pre">haumea()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.shutdown"><code class="docutils literal notranslate"><span class="pre">shutdown()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.startup"><code class="docutils literal notranslate"><span class="pre">startup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.startup_artemis"><code class="docutils literal notranslate"><span class="pre">startup_artemis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.startup_no_flats"><code class="docutils literal notranslate"><span class="pre">startup_no_flats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.target"><code class="docutils literal notranslate"><span class="pre">target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.target_no_DONUTS"><code class="docutils literal notranslate"><span class="pre">target_no_DONUTS()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.txt_files.target_offset"><code class="docutils literal notranslate"><span class="pre">target_offset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK.upload_night_plans">SPOCK.upload_night_plans module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_artemis"><code class="docutils literal notranslate"><span class="pre">upload_np_artemis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_calli"><code class="docutils literal notranslate"><span class="pre">upload_np_calli()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_euro"><code class="docutils literal notranslate"><span class="pre">upload_np_euro()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_gany"><code class="docutils literal notranslate"><span class="pre">upload_np_gany()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_io"><code class="docutils literal notranslate"><span class="pre">upload_np_io()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_saint_ex"><code class="docutils literal notranslate"><span class="pre">upload_np_saint_ex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_tn"><code class="docutils literal notranslate"><span class="pre">upload_np_tn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.upload_night_plans.upload_np_ts"><code class="docutils literal notranslate"><span class="pre">upload_np_ts()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SPOCK.html#module-SPOCK">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SPOCK.html#SPOCK.SPECULOOSScheduler"><code class="docutils literal notranslate"><span class="pre">SPECULOOSScheduler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="SPOCK.html#SPOCK.SPECULOOSScheduler.attempt_insert_block"><code class="docutils literal notranslate"><span class="pre">SPECULOOSScheduler.attempt_insert_block()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eScheduler.html">eScheduler package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#escheduler-conftest-module">eScheduler.conftest module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.constraints_spc">eScheduler.constraints_spc module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AirmassConstraint"><code class="docutils literal notranslate"><span class="pre">AirmassConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AirmassConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">AirmassConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AltitudeConstraint"><code class="docutils literal notranslate"><span class="pre">AltitudeConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AltitudeConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">AltitudeConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AtNightConstraint"><code class="docutils literal notranslate"><span class="pre">AtNightConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AtNightConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">AtNightConstraint.compute_constraint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AtNightConstraint.twilight_astronomical"><code class="docutils literal notranslate"><span class="pre">AtNightConstraint.twilight_astronomical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AtNightConstraint.twilight_civil"><code class="docutils literal notranslate"><span class="pre">AtNightConstraint.twilight_civil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.AtNightConstraint.twilight_nautical"><code class="docutils literal notranslate"><span class="pre">AtNightConstraint.twilight_nautical()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.CelestialPoleSeparationConstraint"><code class="docutils literal notranslate"><span class="pre">CelestialPoleSeparationConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.CelestialPoleSeparationConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">CelestialPoleSeparationConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.Constraint"><code class="docutils literal notranslate"><span class="pre">Constraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.Constraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">Constraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.LocalTimeConstraint"><code class="docutils literal notranslate"><span class="pre">LocalTimeConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.LocalTimeConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">LocalTimeConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonIlluminationConstraint"><code class="docutils literal notranslate"><span class="pre">MoonIlluminationConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonIlluminationConstraint.bright"><code class="docutils literal notranslate"><span class="pre">MoonIlluminationConstraint.bright()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonIlluminationConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">MoonIlluminationConstraint.compute_constraint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonIlluminationConstraint.dark"><code class="docutils literal notranslate"><span class="pre">MoonIlluminationConstraint.dark()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonIlluminationConstraint.grey"><code class="docutils literal notranslate"><span class="pre">MoonIlluminationConstraint.grey()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonSeparationConstraint"><code class="docutils literal notranslate"><span class="pre">MoonSeparationConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.MoonSeparationConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">MoonSeparationConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.PhaseConstraint"><code class="docutils literal notranslate"><span class="pre">PhaseConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.PhaseConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">PhaseConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.PrimaryEclipseConstraint"><code class="docutils literal notranslate"><span class="pre">PrimaryEclipseConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.PrimaryEclipseConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">PrimaryEclipseConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.SecondaryEclipseConstraint"><code class="docutils literal notranslate"><span class="pre">SecondaryEclipseConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.SecondaryEclipseConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">SecondaryEclipseConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.SunSeparationConstraint"><code class="docutils literal notranslate"><span class="pre">SunSeparationConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.SunSeparationConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">SunSeparationConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.TimeConstraint"><code class="docutils literal notranslate"><span class="pre">TimeConstraint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.TimeConstraint.compute_constraint"><code class="docutils literal notranslate"><span class="pre">TimeConstraint.compute_constraint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.is_always_observable"><code class="docutils literal notranslate"><span class="pre">is_always_observable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.is_event_observable"><code class="docutils literal notranslate"><span class="pre">is_event_observable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.is_observable"><code class="docutils literal notranslate"><span class="pre">is_observable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.max_best_rescale"><code class="docutils literal notranslate"><span class="pre">max_best_rescale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.min_best_rescale"><code class="docutils literal notranslate"><span class="pre">min_best_rescale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.months_observable"><code class="docutils literal notranslate"><span class="pre">months_observable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.observability_table"><code class="docutils literal notranslate"><span class="pre">observability_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.constraints_spc.time_grid_from_range"><code class="docutils literal notranslate"><span class="pre">time_grid_from_range()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.exceptions">eScheduler.exceptions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.exceptions.AstroplanWarning"><code class="docutils literal notranslate"><span class="pre">AstroplanWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.exceptions.OldEarthOrientationDataWarning"><code class="docutils literal notranslate"><span class="pre">OldEarthOrientationDataWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.exceptions.PlotBelowHorizonWarning"><code class="docutils literal notranslate"><span class="pre">PlotBelowHorizonWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.exceptions.PlotWarning"><code class="docutils literal notranslate"><span class="pre">PlotWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.exceptions.TargetAlwaysUpWarning"><code class="docutils literal notranslate"><span class="pre">TargetAlwaysUpWarning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.exceptions.TargetNeverUpWarning"><code class="docutils literal notranslate"><span class="pre">TargetNeverUpWarning</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.moon">eScheduler.moon module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.moon.moon_illumination"><code class="docutils literal notranslate"><span class="pre">moon_illumination()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.moon.moon_phase_angle"><code class="docutils literal notranslate"><span class="pre">moon_phase_angle()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.observer">eScheduler.observer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer"><code class="docutils literal notranslate"><span class="pre">Observer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.altaz"><code class="docutils literal notranslate"><span class="pre">Observer.altaz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.astropy_time_to_datetime"><code class="docutils literal notranslate"><span class="pre">Observer.astropy_time_to_datetime()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.at_site"><code class="docutils literal notranslate"><span class="pre">Observer.at_site()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.datetime_to_astropy_time"><code class="docutils literal notranslate"><span class="pre">Observer.datetime_to_astropy_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.is_night"><code class="docutils literal notranslate"><span class="pre">Observer.is_night()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.local_sidereal_time"><code class="docutils literal notranslate"><span class="pre">Observer.local_sidereal_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.midnight"><code class="docutils literal notranslate"><span class="pre">Observer.midnight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.moon_altaz"><code class="docutils literal notranslate"><span class="pre">Observer.moon_altaz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.moon_illumination"><code class="docutils literal notranslate"><span class="pre">Observer.moon_illumination()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.moon_phase"><code class="docutils literal notranslate"><span class="pre">Observer.moon_phase()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.moon_rise_time"><code class="docutils literal notranslate"><span class="pre">Observer.moon_rise_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.moon_set_time"><code class="docutils literal notranslate"><span class="pre">Observer.moon_set_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.noon"><code class="docutils literal notranslate"><span class="pre">Observer.noon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.parallactic_angle"><code class="docutils literal notranslate"><span class="pre">Observer.parallactic_angle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.sun_altaz"><code class="docutils literal notranslate"><span class="pre">Observer.sun_altaz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.sun_rise_time"><code class="docutils literal notranslate"><span class="pre">Observer.sun_rise_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.sun_set_time"><code class="docutils literal notranslate"><span class="pre">Observer.sun_set_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.target_hour_angle"><code class="docutils literal notranslate"><span class="pre">Observer.target_hour_angle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.target_is_up"><code class="docutils literal notranslate"><span class="pre">Observer.target_is_up()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.target_meridian_antitransit_time"><code class="docutils literal notranslate"><span class="pre">Observer.target_meridian_antitransit_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.target_meridian_transit_time"><code class="docutils literal notranslate"><span class="pre">Observer.target_meridian_transit_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.target_rise_time"><code class="docutils literal notranslate"><span class="pre">Observer.target_rise_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.target_set_time"><code class="docutils literal notranslate"><span class="pre">Observer.target_set_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.tonight"><code class="docutils literal notranslate"><span class="pre">Observer.tonight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.twilight_evening_astronomical"><code class="docutils literal notranslate"><span class="pre">Observer.twilight_evening_astronomical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.twilight_evening_civil"><code class="docutils literal notranslate"><span class="pre">Observer.twilight_evening_civil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.twilight_evening_nautical"><code class="docutils literal notranslate"><span class="pre">Observer.twilight_evening_nautical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.twilight_morning_astronomical"><code class="docutils literal notranslate"><span class="pre">Observer.twilight_morning_astronomical()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.twilight_morning_civil"><code class="docutils literal notranslate"><span class="pre">Observer.twilight_morning_civil()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.observer.Observer.twilight_morning_nautical"><code class="docutils literal notranslate"><span class="pre">Observer.twilight_morning_nautical()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.periodic">eScheduler.periodic module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.in_primary_eclipse"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.in_primary_eclipse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.in_secondary_eclipse"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.in_secondary_eclipse()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.next_primary_eclipse_time"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.next_primary_eclipse_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.next_primary_ingress_egress_time"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.next_primary_ingress_egress_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.next_secondary_eclipse_time"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.next_secondary_eclipse_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.next_secondary_ingress_egress_time"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.next_secondary_ingress_egress_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.EclipsingSystem.out_of_eclipse"><code class="docutils literal notranslate"><span class="pre">EclipsingSystem.out_of_eclipse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.PeriodicEvent"><code class="docutils literal notranslate"><span class="pre">PeriodicEvent</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.periodic.PeriodicEvent.phase"><code class="docutils literal notranslate"><span class="pre">PeriodicEvent.phase()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.setup_package">eScheduler.setup_package module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.setup_package.get_package_data"><code class="docutils literal notranslate"><span class="pre">get_package_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.spe_schedule">eScheduler.spe_schedule module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.DateElsa"><code class="docutils literal notranslate"><span class="pre">DateElsa</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.DateElsa.start_and_end"><code class="docutils literal notranslate"><span class="pre">DateElsa.start_and_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.ObservingBlock"><code class="docutils literal notranslate"><span class="pre">ObservingBlock</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.ObservingBlock.constraints_scores"><code class="docutils literal notranslate"><span class="pre">ObservingBlock.constraints_scores</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.ObservingBlock.from_exposures"><code class="docutils literal notranslate"><span class="pre">ObservingBlock.from_exposures()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.PriorityScheduler"><code class="docutils literal notranslate"><span class="pre">PriorityScheduler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.PriorityScheduler.attempt_insert_block"><code class="docutils literal notranslate"><span class="pre">PriorityScheduler.attempt_insert_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule"><code class="docutils literal notranslate"><span class="pre">Schedule</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.change_slot_block"><code class="docutils literal notranslate"><span class="pre">Schedule.change_slot_block()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.insert_slot"><code class="docutils literal notranslate"><span class="pre">Schedule.insert_slot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.new_slots"><code class="docutils literal notranslate"><span class="pre">Schedule.new_slots()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.observing_blocks"><code class="docutils literal notranslate"><span class="pre">Schedule.observing_blocks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.open_slots"><code class="docutils literal notranslate"><span class="pre">Schedule.open_slots</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.scheduled_blocks"><code class="docutils literal notranslate"><span class="pre">Schedule.scheduled_blocks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Schedule.to_table"><code class="docutils literal notranslate"><span class="pre">Schedule.to_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Scheduler"><code class="docutils literal notranslate"><span class="pre">Scheduler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Scheduler.from_timespan"><code class="docutils literal notranslate"><span class="pre">Scheduler.from_timespan()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Scorer"><code class="docutils literal notranslate"><span class="pre">Scorer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Scorer.create_score_array"><code class="docutils literal notranslate"><span class="pre">Scorer.create_score_array()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Scorer.from_start_end"><code class="docutils literal notranslate"><span class="pre">Scorer.from_start_end()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.SequentialScheduler"><code class="docutils literal notranslate"><span class="pre">SequentialScheduler</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.SimpleScheduler"><code class="docutils literal notranslate"><span class="pre">SimpleScheduler</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Slot"><code class="docutils literal notranslate"><span class="pre">Slot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Slot.duration"><code class="docutils literal notranslate"><span class="pre">Slot.duration</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Slot.split_slot"><code class="docutils literal notranslate"><span class="pre">Slot.split_slot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.TransitionBlock"><code class="docutils literal notranslate"><span class="pre">TransitionBlock</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.TransitionBlock.components"><code class="docutils literal notranslate"><span class="pre">TransitionBlock.components</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.TransitionBlock.end_time"><code class="docutils literal notranslate"><span class="pre">TransitionBlock.end_time</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.TransitionBlock.from_duration"><code class="docutils literal notranslate"><span class="pre">TransitionBlock.from_duration()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Transitioner"><code class="docutils literal notranslate"><span class="pre">Transitioner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.spe_schedule.Transitioner.compute_instrument_transitions"><code class="docutils literal notranslate"><span class="pre">Transitioner.compute_instrument_transitions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.target">eScheduler.target module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.target.FixedTarget"><code class="docutils literal notranslate"><span class="pre">FixedTarget</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.target.FixedTarget.from_name"><code class="docutils literal notranslate"><span class="pre">FixedTarget.from_name()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.target.NonFixedTarget"><code class="docutils literal notranslate"><span class="pre">NonFixedTarget</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.target.Target"><code class="docutils literal notranslate"><span class="pre">Target</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.target.Target.dec"><code class="docutils literal notranslate"><span class="pre">Target.dec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eScheduler.html#eScheduler.target.Target.ra"><code class="docutils literal notranslate"><span class="pre">Target.ra</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler.utils">eScheduler.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.utils.download_IERS_A"><code class="docutils literal notranslate"><span class="pre">download_IERS_A()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.utils.stride_array"><code class="docutils literal notranslate"><span class="pre">stride_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="eScheduler.html#eScheduler.utils.time_grid_from_range"><code class="docutils literal notranslate"><span class="pre">time_grid_from_range()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eScheduler.html#module-eScheduler">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">setup module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#setup.get_distname"><code class="docutils literal notranslate"><span class="pre">get_distname()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#setup.get_version"><code class="docutils literal notranslate"><span class="pre">get_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">test module</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Elsa Ducrot.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
