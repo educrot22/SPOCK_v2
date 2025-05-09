@@ -1,7 +1,7 @@
 .. image:: https://img.shields.io/badge/docs-dev-green.svg
     :target: https://educrot22.github.io/SPOCK_v2/index.html
 
-.. image:: ./SPOCK_Figures/spock_v2_logo.png
+.. image:: ./assets/images/spock_v2_logo.png
    :width: 600
 
 **SPOCK_v2** (Speculoos Observatory SChedule maKer) is a python package developed to handle the
