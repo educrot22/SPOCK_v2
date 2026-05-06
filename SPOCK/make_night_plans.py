@@ -714,7 +714,7 @@ def make_astra_schedule_file(day, nb_days, telescope):
             elif 'ch_' in scheduler_table['target'][i] or 'Ch_' in scheduler_table['target'][i]:
                 action_values_target = {'object': name[i], 'filter': filt[i], 'ra': coords.ra.value, 'dec': coords.dec.value,
                             'exptime': int(texp[i]), 'guiding': True, 'pointing': True, 
-                            'dir': f'C:/Users/speculoos/Documents/astra/images/Chilean/{str(t_now)}'}
+                            'dir': 'C:/Users/speculoos/Documents/astra/images/Chilean'}
             else:
                 action_values_target = {'object': name[i], 'filter': filt[i], 'ra': coords.ra.value, 'dec': coords.dec.value,
                             'exptime': int(texp[i]), 'guiding': True, 'pointing': True}

@@ -1271,7 +1271,7 @@ class Schedules:
         else:
             #filters list
             filt_ = target_list['Filter_spc'][i].values[0]
-            if (filt_ == 'z\'') or (filt_ == 'r\'') or (filt_ == 'i\'') or (filt_ == 'g\''):
+            if (filt_ == 'z\'') or (filt_ == 'r\'') or (filt_ == 'i\'') or (filt_ == 'g\'') or (filt_ == 'u\''):
                 filt_ = filt_.replace('\'', '')
             if filt_ == 'zcut':
                 filt_ = 'z'
@@ -1358,11 +1358,11 @@ class Schedules:
                 if target_list['Teff'][i].values[0] is not None and target_list['distance'][i].values[0] is not None:
                     try:
                         andor = mphot.get_precision(props_telescope_ANDOR, props_sky, #source_id=target_list["Gaia_ID"][i].values[0],
-                                                    Teff=target_list["Teff"][i].values[0],distance=target_list["distance"][i].values[0])
+                                                    Teff=float(target_list["Teff"][i].values[0]),distance=float(target_list["distance"][i].values[0]))
                     except FileNotFoundError:
                         print(Fore.GREEN + 'INFO: ' + Fore.BLACK + ' Re-running the grid for mphot, can take 30s')
                         andor = mphot.get_precision(props_telescope_ANDOR, props_sky, #source_id=target_list["Gaia_ID"][i].values[0],
-                                                    Teff=target_list["Teff"][i].values[0], distance=target_list["distance"][i].values[0], override_grid=True)
+                                                    Teff=float(target_list["Teff"][i].values[0]), distance=float(target_list["distance"][i].values[0]), override_grid=True)
                 else:
                     try:
                         andor = mphot.get_precision_gaia(props_telescope_ANDOR, props_sky, source_id=target_list["Gaia_ID"][i].values[0], 
