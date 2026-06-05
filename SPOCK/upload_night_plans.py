@@ -76,7 +76,7 @@ def upload_np(t_now, nb_day, telescope):
             "172.16.4.169", username="speculoos", password=pwd_HUB
         )
         ssh_client_SNO_hub.connect(
-            "172.16.3.11", username="speculoos", password=pwd_SNO_Reduc1
+            "10.16.83.11", username="speculoos", password=pwd_SNO_Reduc1
         )
         print("Connected to the servers!")
         # Open SFTP sessions
