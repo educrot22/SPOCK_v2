@@ -518,7 +518,16 @@ def get_open_close_times_saintex(day, num_filters=1):
     return full_open.iso, full_close.iso
 
 
-def make_astra_schedule_file(day, nb_days, telescope):
+def make_astra_schedule_file(day, nb_days, telescope, defocus_entries=None, force_autofocus=False):
+    """
+    defocus_entries : list of dict, optional
+        Each dict has keys 'target' (str), 'filter' (str), 'value' (int).
+        Example: [{'target': 'HD98800', 'filter': "r'", 'value': -260},
+                  {'target': 'TRAPPIST-1', 'filter': 'I+z', 'value': -100}]
+    force_autofocus : bool, optional
+        When True, behaves as if it is the 3rd of the month: skips the dome
+        rotation and inserts an autofocus block after the first target.
+    """
     t0 = Time(day)
     dt = Time('2018-01-02 00:00:00', scale='tcg') - Time('2018-01-01 00:00:00', scale='tcg')  # 1 day
 
@@ -532,10 +541,13 @@ def make_astra_schedule_file(day, nb_days, telescope):
         scheduler_table = Table.read(path_spock + '/DATABASE/' + str(telescope) + '/Archive_night_blocks' +
                                      '/night_blocks_' + str(telescope) + '_' + str(t_now) + '.txt', format='ascii')
         is_third_of_month = int(t_now.split('-')[2]) == 3  # True when the plan date is the 3rd of the month
+        do_autofocus = is_third_of_month or force_autofocus  # forced manually or on the 3rd
         if (telescope == 'Io') or telescope == ('Europa') or (telescope == 'Ganymede') or (telescope == 'Callisto'):
-            if not is_third_of_month:
+            if not do_autofocus:
                 scheduler_table = dome_rotation(telescope=telescope, day_of_night=t_now)  # Intentional dome rotation to
                 # avoid technical pb on Callisto with dome
+            elif force_autofocus and not is_third_of_month:
+                print(Fore.GREEN + 'INFO: ' + Fore.BLACK + f' Manual autofocus requested: skipping dome rotation for {telescope} on {t_now}')
         name = scheduler_table['target']
         config = scheduler_table['configuration']
         filt = []
@@ -718,17 +730,34 @@ def make_astra_schedule_file(day, nb_days, telescope):
             else:
                 action_values_target = {'object': name[i], 'filter': filt[i], 'ra': coords.ra.value, 'dec': coords.dec.value,
                             'exptime': int(texp[i]), 'guiding': True, 'pointing': True}
+            # Inject focus_shift if defocus is requested for this target/filter
+            if defocus_entries:
+                for _entry in defocus_entries:
+                    if name[i] == _entry['target'] and filt[i] == _entry['filter']:
+                        action_values_target['focus_shift'] = int(_entry['value'])
+                        print(Fore.GREEN + 'INFO: ' + Fore.BLACK +
+                              f" Defocus focus_shift={_entry['value']} applied to {name[i]} ({filt[i]})")
+                        break
             target_row = pd.Series({"device_name": "camera_"+str(telescope).replace("-",""),
                              "action_type": "object",	"action_value": action_values_target,
                              "start_time": (Time(scheduler_table["start time (UTC)"][i] ) + 1*u.min).iso,
                                     "end_time": scheduler_table["end time (UTC)"][i]})
             df = pd.concat([df, pd.DataFrame([target_row])], ignore_index=True)
 
-            # On the 3rd of each month, insert an autofocus action after the first target
-            if is_third_of_month and i == 0 and len(scheduler_table) > 1:
-                autofocus_start = Time(scheduler_table["end time (UTC)"][0]) + 1 * u.min
-                autofocus_end   = Time(scheduler_table["end time (UTC)"][1])
+            # On the 3rd of each month (or when manually forced), insert an autofocus action after the first target
+            if do_autofocus and i == 0:
                 autofocus_filter = "zYJ" if telescope == "Callisto" else "I+z"
+                if len(scheduler_table) > 1:
+                    # Multi-target night: insert autofocus between target[0] and target[1]
+                    autofocus_start = Time(scheduler_table["end time (UTC)"][0]) + 1 * u.min
+                    autofocus_end   = Time(scheduler_table["end time (UTC)"][1])
+                else:
+                    # Single-target night: insert autofocus in the middle of the target block
+                    t_start = Time(scheduler_table["start time (UTC)"][0])
+                    t_end   = Time(scheduler_table["end time (UTC)"][0])
+                    midpoint = Time((t_start.jd + t_end.jd) / 2, format='jd')
+                    autofocus_start = midpoint
+                    autofocus_end   = midpoint + 10 * u.min
                 autofocus_row = pd.Series({
                     "device_name": "camera_" + str(telescope).replace("-", ""),
                     "action_type": "autofocus",
@@ -743,8 +772,9 @@ def make_astra_schedule_file(day, nb_days, telescope):
                     "start_time": autofocus_start.iso,
                     "end_time":   autofocus_end.iso})
                 df = pd.concat([df, pd.DataFrame([autofocus_row])], ignore_index=True)
+                reason = "forced manually" if (force_autofocus and not is_third_of_month) else "3rd of month"
                 print(Fore.GREEN + 'INFO: ' + Fore.BLACK +
-                      f' Autofocus block added for {telescope} on {t_now} (3rd of month)')
+                      f' Autofocus block added for {telescope} on {t_now} ({reason})')
 
         # Flats MORNING
         my_custom_order_morning = my_custom_order_evening[::-1]# temporaty fix for Callisto 

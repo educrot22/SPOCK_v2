@@ -695,7 +695,7 @@ def save_schedule(save, over_write, date_range, telescope):
             print(Fore.GREEN + 'INFO:  ' + Fore.BLACK + ' Those plans have not been saved')
 
 
-def make_plans(day, nb_days, telescope):
+def make_plans(day, nb_days, telescope, defocus_entries=None, force_autofocus=False):
     """ make plans for telescope for a certain number of day from a start day
 
     Parameters
@@ -714,7 +714,7 @@ def make_plans(day, nb_days, telescope):
     """
 
     make_np(day, nb_days, telescope)
-    make_astra_schedule_file(day, nb_days, telescope)
+    make_astra_schedule_file(day, nb_days, telescope, defocus_entries=defocus_entries, force_autofocus=force_autofocus)
 
 
 def upload_plans(day, nb_days, telescope):
