@@ -641,19 +641,39 @@ class Schedules:
             W_err_transit = df['W_err'][i]
             target_transit = EclipsingSystem(primary_eclipse_time=epoch, orbital_period=period, duration=duration,
                                              name=df['Sp_ID'][i])
-            print(Fore.GREEN + Fore.GREEN + Fore.GREEN + 'INFO: ' + Fore.BLACK + ' ' + Fore.BLACK +
-                  Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
-                  Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).iso)
-            timing_to_obs_jd = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).jd
-            n_transits = 1
+            # Check up to 3 upcoming transits — the first may fall before dark (daytime),
+            # while the one that actually belongs to this night may cross midnight.
+            _n_check = 3
+            _night_end = self.day_of_night + 1
+            _all_mid = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=_n_check)).jd
+            print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
+                  Time(_all_mid[0], format='jd').iso)
             try:
-                ing_egr = target_transit.next_primary_ingress_egress_time(self.day_of_night, n_eclipses=n_transits)
+                _all_ing_egr = target_transit.next_primary_ingress_egress_time(self.day_of_night, n_eclipses=_n_check)
             except ValueError:
                 print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + ' No transit of ', df['Sp_ID'][i],
                       ' on the period chosen')
+                _all_ing_egr = None
 
-            observable = is_event_observable(constraints_follow_up, self.observatory, self.targets_follow_up,
-                                             times_ingress_egress=ing_egr)
+            # Walk through upcoming transits to find the first one observable this night
+            observable = np.array([[False]])
+            ing_egr = _all_ing_egr[0:1] if _all_ing_egr is not None else None
+            timing_to_obs_jd = np.array([_all_mid[0]])
+            if _all_ing_egr is not None:
+                for _t_idx in range(_n_check):
+                    _mid_t = Time(_all_mid[_t_idx], format='jd')
+                    if _mid_t > _night_end:
+                        break
+                    _single_ie = _all_ing_egr[_t_idx:_t_idx + 1]
+                    _obs = is_event_observable(constraints_follow_up, self.observatory, self.targets_follow_up,
+                                               times_ingress_egress=_single_ie)
+                    if np.any(_obs):
+                        observable = _obs
+                        ing_egr = _single_ie
+                        timing_to_obs_jd = np.array([_all_mid[_t_idx]])
+                        print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) +
+                              ' observable transit mid-time: ', _mid_t.iso)
+                        break
             if np.any(observable):
                 err_T0_neg = T0_err_transit  # timing_to_obs_jd[0] -
                 # (np.round((timing_to_obs_jd[0] - epoch.jd) / period.value, 1) *(period.value -
@@ -774,19 +794,37 @@ class Schedules:
                 W_err_transit = df['W_err'][i]
                 target_transit = EclipsingSystem(primary_eclipse_time=epoch, orbital_period=period,
                                                  duration=duration, name=df['Sp_ID'][i])
-                print(Fore.GREEN + Fore.GREEN + Fore.GREEN + 'INFO: ' + Fore.BLACK + ' ' +
-                      Fore.BLACK + Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
-                      Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).iso)
-                timing_to_obs_jd = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).jd
-                n_transits = 1
+                _n_check = 3
+                _night_end = self.day_of_night + 1
+                _all_mid = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=_n_check)).jd
+                print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
+                      Time(_all_mid[0], format='jd').iso)
                 try:
-                    ing_egr = target_transit.next_primary_ingress_egress_time(self.day_of_night, n_eclipses=n_transits)
+                    _all_ing_egr = target_transit.next_primary_ingress_egress_time(
+                        self.day_of_night, n_eclipses=_n_check)
                 except ValueError:
                     print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + ' No transit of ',
                           df['Sp_ID'][i], ' on the period chosen')
+                    _all_ing_egr = None
 
-                observable = is_event_observable(constraints, self.observatory,
-                                                 self.targets_follow_up, times_ingress_egress=ing_egr)
+                observable = np.array([[False]])
+                ing_egr = _all_ing_egr[0:1] if _all_ing_egr is not None else None
+                timing_to_obs_jd = np.array([_all_mid[0]])
+                if _all_ing_egr is not None:
+                    for _t_idx in range(_n_check):
+                        _mid_t = Time(_all_mid[_t_idx], format='jd')
+                        if _mid_t > _night_end:
+                            break
+                        _single_ie = _all_ing_egr[_t_idx:_t_idx + 1]
+                        _obs = is_event_observable(constraints, self.observatory,
+                                                   self.targets_follow_up, times_ingress_egress=_single_ie)
+                        if np.any(_obs):
+                            observable = _obs
+                            ing_egr = _single_ie
+                            timing_to_obs_jd = np.array([_all_mid[_t_idx]])
+                            print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) +
+                                  ' observable transit mid-time: ', _mid_t.iso)
+                            break
                 if np.any(observable):
                     err_T0_neg = timing_to_obs_jd[0] - (np.round((timing_to_obs_jd[0] - epoch.jd) / period.value, 1) *
                                                         (period.value - P_err_transit) + (epoch.jd - T0_err_transit))
