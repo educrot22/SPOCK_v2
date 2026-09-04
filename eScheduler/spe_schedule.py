@@ -1104,12 +1104,13 @@ class SPECULOOSScheduler(Scheduler):
             sum_scores = np.zeros(len(_strided_scores))
             sum_scores[good] = np.sum(_strided_scores[good], axis=1)
 
-
+            _failure_reason = 'too_short'
 
             if np.all(constraint_scores == 0) :
                 # No further calculation if no times meet the constraints
                 # print(b,'pb constraints')
                 _is_scheduled = False
+                _failure_reason = 'constraints'
             else:
                 # schedulable in principle, provided the transition
                 # does not prevent us from fitting it in.
@@ -1162,8 +1163,28 @@ class SPECULOOSScheduler(Scheduler):
 
             if not _is_scheduled:
                 unscheduled_blocks.append(b)
-                sys.exit(Fore.RED + 'ERROR: ' + Fore.BLACK
-                     + "Unable to schedule this block with SPECULOOS Scheduler, this happens when the block is too short (<10min)")
+                if _failure_reason == 'constraints':
+                    # Diagnose which constraint(s) failed
+                    failed_constraints = []
+                    seen_constraint_types = set()
+                    all_constraints = list(b.constraints or []) + list(self.constraints or [])
+                    for constraint in all_constraints:
+                        ctype = type(constraint).__name__
+                        if ctype in seen_constraint_types:
+                            continue
+                        seen_constraint_types.add(ctype)
+                        constraint_score = constraint(self.observer, b.target, times=times)
+                        if np.all(constraint_score == 0):
+                            failed_constraints.append(ctype)
+                    if failed_constraints:
+                        print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK
+                             + f' Target "{b.target.name}" not observable. Failed constraint(s): {", ".join(failed_constraints)}.')
+                    else:
+                        print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK
+                             + f' Target "{b.target.name}" is not observable with the given constraints during this night.')
+                else:
+                    print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK
+                         + f' Unable to schedule block for "{b.target.name}" with SPECULOOS Scheduler (block too short or no valid slot).')
 
         empty_space=np.where(~self._get_filled_indices(times))
         if len(empty_space)*time_resolution.value>20:

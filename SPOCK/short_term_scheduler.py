@@ -17,6 +17,7 @@ from docx.shared import *
 from datetime import date, timedelta, datetime
 from eScheduler.spe_schedule import SPECULOOSScheduler, Schedule, ObservingBlock, Transitioner
 import gspread
+import hashlib
 import matplotlib.pyplot as plt
 import mphot
 # path_mphot = mphot.__file__.replace('__init__.py', '')
@@ -514,7 +515,14 @@ class Schedules:
             constraints_special_target = [AltitudeConstraint(min=self.altitude_constraint * u.deg),
                                         MoonSeparationConstraint(min=self.moon_constraint * u.deg),
                                         TimeConstraint(start, end)]
-            idx_to_insert_target = int(np.where((self.target_table_spc['Sp_ID'] == input_name))[0])
+            
+            # Find the target index
+            matches = np.where((self.target_table_spc['Sp_ID'] == input_name))[0]
+            if len(matches) == 0:
+                print(Fore.RED + 'ERROR: ' + Fore.BLACK + f'Target "{input_name}" not found in target table.')
+                print(Fore.CYAN + 'Available targets: ' + Fore.BLACK + ', '.join(self.target_table_spc['Sp_ID'].astype(str)))
+                raise ValueError(f'Target "{input_name}" not found')
+            idx_to_insert_target = int(matches[0])
 
             ## WARNING with Next and Nearest
             rise_target = self.observatory.target_rise_time(self.start_of_observation, self.targets[idx_to_insert_target],  which='nearest', 
@@ -633,19 +641,39 @@ class Schedules:
             W_err_transit = df['W_err'][i]
             target_transit = EclipsingSystem(primary_eclipse_time=epoch, orbital_period=period, duration=duration,
                                              name=df['Sp_ID'][i])
-            print(Fore.GREEN + Fore.GREEN + Fore.GREEN + 'INFO: ' + Fore.BLACK + ' ' + Fore.BLACK +
-                  Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
-                  Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).iso)
-            timing_to_obs_jd = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).jd
-            n_transits = 1
+            # Check up to 3 upcoming transits — the first may fall before dark (daytime),
+            # while the one that actually belongs to this night may cross midnight.
+            _n_check = 3
+            _night_end = self.day_of_night + 1
+            _all_mid = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=_n_check)).jd
+            print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
+                  Time(_all_mid[0], format='jd').iso)
             try:
-                ing_egr = target_transit.next_primary_ingress_egress_time(self.day_of_night, n_eclipses=n_transits)
+                _all_ing_egr = target_transit.next_primary_ingress_egress_time(self.day_of_night, n_eclipses=_n_check)
             except ValueError:
                 print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + ' No transit of ', df['Sp_ID'][i],
                       ' on the period chosen')
+                _all_ing_egr = None
 
-            observable = is_event_observable(constraints_follow_up, self.observatory, self.targets_follow_up,
-                                             times_ingress_egress=ing_egr)
+            # Walk through upcoming transits to find the first one observable this night
+            observable = np.array([[False]])
+            ing_egr = _all_ing_egr[0:1] if _all_ing_egr is not None else None
+            timing_to_obs_jd = np.array([_all_mid[0]])
+            if _all_ing_egr is not None:
+                for _t_idx in range(_n_check):
+                    _mid_t = Time(_all_mid[_t_idx], format='jd')
+                    if _mid_t > _night_end:
+                        break
+                    _single_ie = _all_ing_egr[_t_idx:_t_idx + 1]
+                    _obs = is_event_observable(constraints_follow_up, self.observatory, self.targets_follow_up,
+                                               times_ingress_egress=_single_ie)
+                    if np.any(_obs):
+                        observable = _obs
+                        ing_egr = _single_ie
+                        timing_to_obs_jd = np.array([_all_mid[_t_idx]])
+                        print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) +
+                              ' observable transit mid-time: ', _mid_t.iso)
+                        break
             if np.any(observable):
                 err_T0_neg = T0_err_transit  # timing_to_obs_jd[0] -
                 # (np.round((timing_to_obs_jd[0] - epoch.jd) / period.value, 1) *(period.value -
@@ -766,19 +794,37 @@ class Schedules:
                 W_err_transit = df['W_err'][i]
                 target_transit = EclipsingSystem(primary_eclipse_time=epoch, orbital_period=period,
                                                  duration=duration, name=df['Sp_ID'][i])
-                print(Fore.GREEN + Fore.GREEN + Fore.GREEN + 'INFO: ' + Fore.BLACK + ' ' +
-                      Fore.BLACK + Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
-                      Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).iso)
-                timing_to_obs_jd = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=1)).jd
-                n_transits = 1
+                _n_check = 3
+                _night_end = self.day_of_night + 1
+                _all_mid = Time(target_transit.next_primary_eclipse_time(self.day_of_night, n_eclipses=_n_check)).jd
+                print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) + ' next transit: ',
+                      Time(_all_mid[0], format='jd').iso)
                 try:
-                    ing_egr = target_transit.next_primary_ingress_egress_time(self.day_of_night, n_eclipses=n_transits)
+                    _all_ing_egr = target_transit.next_primary_ingress_egress_time(
+                        self.day_of_night, n_eclipses=_n_check)
                 except ValueError:
                     print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + ' No transit of ',
                           df['Sp_ID'][i], ' on the period chosen')
+                    _all_ing_egr = None
 
-                observable = is_event_observable(constraints, self.observatory,
-                                                 self.targets_follow_up, times_ingress_egress=ing_egr)
+                observable = np.array([[False]])
+                ing_egr = _all_ing_egr[0:1] if _all_ing_egr is not None else None
+                timing_to_obs_jd = np.array([_all_mid[0]])
+                if _all_ing_egr is not None:
+                    for _t_idx in range(_n_check):
+                        _mid_t = Time(_all_mid[_t_idx], format='jd')
+                        if _mid_t > _night_end:
+                            break
+                        _single_ie = _all_ing_egr[_t_idx:_t_idx + 1]
+                        _obs = is_event_observable(constraints, self.observatory,
+                                                   self.targets_follow_up, times_ingress_egress=_single_ie)
+                        if np.any(_obs):
+                            observable = _obs
+                            ing_egr = _single_ie
+                            timing_to_obs_jd = np.array([_all_mid[_t_idx]])
+                            print(Fore.GREEN + 'INFO: ' + Fore.BLACK + str(df['Sp_ID'][i]) +
+                                  ' observable transit mid-time: ', _mid_t.iso)
+                            break
                 if np.any(observable):
                     err_T0_neg = timing_to_obs_jd[0] - (np.round((timing_to_obs_jd[0] - epoch.jd) / period.value, 1) *
                                                         (period.value - P_err_transit) + (epoch.jd - T0_err_transit))
@@ -1150,11 +1196,13 @@ class Schedules:
             return self.scheduled_table
         else:
             try:
-                self.scheduled_table = read_night_block(telescope=self.telescope,
+                # Use sync-check version to prevent concurrent edit conflicts
+                self.scheduled_table = read_night_block_with_sync_check(telescope=self.telescope,
                                                         day=self.day_of_night.tt.datetime.strftime("%Y-%m-%d"))
                 return self.scheduled_table
             except TypeError:
-                self.scheduled_table = read_night_block(telescope=self.telescope,
+                # Fallback to sync-check version if needed
+                self.scheduled_table = read_night_block_with_sync_check(telescope=self.telescope,
                                                         day=self.day_of_night.tt.datetime.strftime("%Y-%m-%d"))
                 return self.scheduled_table
 
@@ -1271,7 +1319,7 @@ class Schedules:
         else:
             #filters list
             filt_ = target_list['Filter_spc'][i].values[0]
-            if (filt_ == 'z\'') or (filt_ == 'r\'') or (filt_ == 'i\'') or (filt_ == 'g\''):
+            if (filt_ == 'z\'') or (filt_ == 'r\'') or (filt_ == 'i\'') or (filt_ == 'g\'') or (filt_ == 'u\''):
                 filt_ = filt_.replace('\'', '')
             if filt_ == 'zcut':
                 filt_ = 'z'
@@ -1358,11 +1406,11 @@ class Schedules:
                 if target_list['Teff'][i].values[0] is not None and target_list['distance'][i].values[0] is not None:
                     try:
                         andor = mphot.get_precision(props_telescope_ANDOR, props_sky, #source_id=target_list["Gaia_ID"][i].values[0],
-                                                    Teff=target_list["Teff"][i].values[0],distance=target_list["distance"][i].values[0])
+                                                    Teff=float(target_list["Teff"][i].values[0]),distance=float(target_list["distance"][i].values[0]))
                     except FileNotFoundError:
                         print(Fore.GREEN + 'INFO: ' + Fore.BLACK + ' Re-running the grid for mphot, can take 30s')
                         andor = mphot.get_precision(props_telescope_ANDOR, props_sky, #source_id=target_list["Gaia_ID"][i].values[0],
-                                                    Teff=target_list["Teff"][i].values[0], distance=target_list["distance"][i].values[0], override_grid=True)
+                                                    Teff=float(target_list["Teff"][i].values[0]), distance=float(target_list["distance"][i].values[0]), override_grid=True)
                 else:
                     try:
                         andor = mphot.get_precision_gaia(props_telescope_ANDOR, props_sky, source_id=target_list["Gaia_ID"][i].values[0], 
@@ -1439,9 +1487,9 @@ def save_schedule(save, over_write, day, telescope):
         print(Fore.GREEN + 'INFO:  ' + Fore.BLACK + ' Those plans have not been saved')
 
 
-def make_plans(day, nb_days, telescope):
+def make_plans(day, nb_days, telescope, defocus_entries=None, force_autofocus=False):
     make_np(day, nb_days, telescope)
-    make_astra_schedule_file(day, nb_days, telescope)
+    make_astra_schedule_file(day, nb_days, telescope, defocus_entries=defocus_entries, force_autofocus=force_autofocus)
 
 
 def upload_plans(day, nb_days, telescope):
@@ -1482,6 +1530,114 @@ def upload_plans(day, nb_days, telescope):
  #                     path_database_home_masterfile])
 
 
+def read_night_block_with_sync_check(telescope, day):
+    """
+    Read night block with server sync check - prevents data loss from concurrent edits.
+    
+    Before scheduling, this function:
+    1. Fetches the latest plan from the server
+    2. Compares with local version
+    3. Warns if they differ (colleague may have uploaded changes)
+    4. Updates local file if server version is newer
+    5. Returns the synchronized schedule
+    
+    Parameters:
+    -----------
+    telescope : str
+        Telescope name (e.g., 'Artemis', 'Saint-Ex')
+    day : str or datetime
+        Observation date
+        
+    Returns:
+    --------
+    scheduler_table : pd.DataFrame or astropy.Table
+        The synchronized night plan
+    """
+    day_fmt = Time(day, scale='utc', out_subfmt='date').tt.datetime.strftime("%Y-%m-%d")
+    path_local = path_spock + '/DATABASE/' + telescope + '/Archive_night_blocks/night_blocks_' + telescope + '_' + \
+                 day_fmt + '.txt'
+    
+    # Step 1: Try to fetch from server
+    nightb_url = "https://www.mrao.cam.ac.uk/SPECULOOS/Observations/" + telescope + '/schedule/Archive_night_blocks/night_blocks_' + \
+                 telescope + '_' + day_fmt + '.txt'
+    
+    try:
+        nightb_server = requests.get(nightb_url, auth=(user_portal, pwd_portal), timeout=10)
+        server_available = (nightb_server.status_code == 200)
+        server_content = nightb_server.content if server_available else None
+    except Exception as e:
+        print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + f'Could not fetch plan from server - {e}')
+        server_available = False
+        server_content = None
+    
+    # Step 2: Check if local plan exists
+    local_exists = os.path.exists(path_local)
+    
+    if server_available and server_content:
+        # Both local and server available - check for conflicts
+        if local_exists:
+            # Compare local vs server
+            try:
+                with open(path_local, 'rb') as f:
+                    local_content = f.read()
+                
+                # Simple MD5 hash comparison to detect changes
+                import hashlib
+                local_hash = hashlib.md5(local_content).hexdigest()
+                server_hash = hashlib.md5(server_content).hexdigest()
+                
+                if local_hash != server_hash:
+                    print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + 
+                          f'⚠️  CONFLICT DETECTED on {day_fmt}!')
+                    print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + 
+                          'Your local plan differs from the server plan.')
+                    print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + 
+                          'This may indicate a colleague has updated the schedule.')
+                    print(Fore.CYAN + 'INFO: ' + Fore.BLACK + 
+                          'Using SERVER version (most recent) to prevent data loss.')
+                    print(Fore.CYAN + 'INFO: ' + Fore.BLACK + 
+                          'If you need your local changes, check "See night plans" tab to review.')
+                else:
+                    print(Fore.GREEN + 'INFO: ' + Fore.BLACK + 
+                          f'Local plan is synchronized with server ({day_fmt})')
+            except Exception as e:
+                print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + f'Could not compare plans - {e}')
+        
+        # Update local file with server version (ensures sync)
+        try:
+            os.makedirs(os.path.dirname(path_local), exist_ok=True)
+            with open(path_local, 'wb') as f:
+                f.write(server_content)
+            print(Fore.GREEN + 'INFO: ' + Fore.BLACK + 'Local plan updated from server')
+        except Exception as e:
+            print(Fore.YELLOW + 'WARNING: ' + Fore.BLACK + f'Could not update local plan - {e}')
+        
+        # Load and return the table
+        try:
+            scheduler_table = pd.read_csv(path_local, delimiter=' ', skipinitialspace=True)
+            return scheduler_table
+        except Exception as e:
+            print(Fore.RED + 'ERROR: ' + Fore.BLACK + f'Could not parse night plan - {e}')
+            raise
+    
+    elif local_exists:
+        # Only local available
+        print(Fore.GREEN + 'INFO: ' + Fore.BLACK + 
+              'Using local plan (server unavailable)')
+        try:
+            scheduler_table = Table.read(path_local, format='ascii')
+            return scheduler_table
+        except Exception as e:
+            print(Fore.RED + 'ERROR: ' + Fore.BLACK + f'Could not read local plan - {e}')
+            raise
+    
+    else:
+        # Neither local nor server
+        print(Fore.RED + 'ERROR: ' + Fore.BLACK + f'No plans available for {telescope} on {day_fmt}')
+        print(Fore.YELLOW + 'INFO: ' + Fore.BLACK + 'Checked: Local DATABASE and server')
+        raise FileNotFoundError(f'No night plan found for {telescope} on {day_fmt}')
+
+
 def read_night_block(telescope, day):
     day_fmt = Time(day, scale='utc', out_subfmt='date').tt.datetime.strftime("%Y-%m-%d")
     path_local = path_spock + '/DATABASE/' + telescope + '/Archive_night_blocks/night_blocks_' + telescope + '_' + \
@@ -1504,6 +1660,7 @@ def read_night_block(telescope, day):
             open(path_local, 'wb').write(nightb.content)
             scheduler_table = pd.read_csv(path_local, delimiter=' ', skipinitialspace=True,)
     return scheduler_table
+
 
 
 def date_range_in_days(date_range):
