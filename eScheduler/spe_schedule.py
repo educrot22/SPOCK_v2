@@ -145,7 +145,7 @@ class Scorer(object):
                                                times=times)
 
                     score_array[i] *= applied_score
-                    score_array[i] *= block.duration.to_value()
+                   # score_array[i] *= block.duration.to_value() # commentes out because introduce fail to schedule short blocks
 
         for constraint in self.global_constraints:
             score_array *= constraint(self.observer, self.targets, times,
@@ -761,7 +761,8 @@ class PriorityScheduler(Scheduler):
         if self.constraints is None:
             self.constraints = [AltitudeConstraint(min=0 * u.deg)]
         else:
-            self.constraints.append(AltitudeConstraint(min=0 * u.deg))
+            #self.constraints.append(AltitudeConstraint(min=0 * u.deg))
+            self.constraints = list(self.constraints) + [AltitudeConstraint(min=0 * u.deg)]
 
         for i, b in enumerate(blocks):
 
@@ -1038,7 +1039,8 @@ class SPECULOOSScheduler(Scheduler):
         if self.constraints is None:
             self.constraints = [AltitudeConstraint(min=0 * u.deg)]
         else:
-            self.constraints.append(AltitudeConstraint(min=0 * u.deg))
+            #self.constraints.append(AltitudeConstraint(min=0 * u.deg))
+            self.constraints = list(self.constraints) + [AltitudeConstraint(min=0 * u.deg)]
 
         for i, b in enumerate(blocks):
             b._duration_offsets = u.Quantity([0 * u.second, b.duration / 2, b.duration])
